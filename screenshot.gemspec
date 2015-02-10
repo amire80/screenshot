@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Screenshot::VERSION
   spec.authors       = ["Vikas Yaligar", "Željko Filipin", "Amir E. Aharoni"]
   spec.email         = ["amir.aharoni@mail.huji.ac.il"]
-  spec.description   = %q{A library for taking and cropping screenshots of web pages.}
+  spec.description   = %q{A library for taking and cropping screenshots of web pages. It uses Selenium and chunky_png. It was originally built for taking screenshots in many languages for the translations of the Wikimedia VisualEditor user manual, but now it can be used for any project.}
   spec.summary       = %q{A library for taking and cropping screenshots of web pages.}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/amire80/screenshot"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
