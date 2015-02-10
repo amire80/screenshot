@@ -10,7 +10,7 @@ module Screenshot
     crop_image screenshot_path, page_elements, nil
   end
 
-  def zoom_browser(rate)
+  def self.zoom_browser(rate)
     rate.abs.times do
       direction = rate > 0 ? :add : :subtract
       @browser.send_keys [:control, direction]
