@@ -1,7 +1,7 @@
 require "screenshot/version"
 
 module Screenshot
-  def capture_screenshot(file_name, page_elements)
+  def self.capture(file_name, page_elements)
     screenshot_directory = ENV['LANGUAGE_SCREENSHOT_PATH'] || 'screenshots'
     FileUtils.mkdir_p screenshot_directory
     screenshot_path = "#{screenshot_directory}/#{file_name}"
