@@ -1,6 +1,9 @@
-Copyright (c) 2015 Amir E. Aharoni
+Copyright (c) 2014-2015 Vikas Yaligar, Željko Filipin and Amir E. Aharoni
+under the terms of The MIT License (MIT), as follows:
 
-MIT License
+This software consists of voluntary contributions made by many
+individuals (AUTHORS.txt) For exact contribution history, see the
+revision history and logs, available at https://gerrit.wikimedia.org
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
