@@ -1,6 +1,10 @@
 # Screenshot
 
-TODO: Write a gem description
+This is a gem for taking and cropping screenshots of web pages.
+It uses Selenium and chunky_png.
+It was originally built for taking screenshots in many languages for
+the translations of the Wikimedia VisualEditor user manual,
+but now it can be used for any project.
 
 ## Installation
 
