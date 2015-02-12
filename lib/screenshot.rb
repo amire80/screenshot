@@ -1,29 +1,29 @@
 require "screenshot/version"
 
 module Screenshot
-  def self.capture(file_name, page_elements)
+  def self.capture(browser, file_name, page_elements)
     screenshot_directory = ENV['LANGUAGE_SCREENSHOT_PATH'] || 'screenshots'
     FileUtils.mkdir_p screenshot_directory
     screenshot_path = "#{screenshot_directory}/#{file_name}"
 
-    @browser.screenshot.save screenshot_path
-    crop_image screenshot_path, page_elements, nil
+    browser.screenshot.save screenshot_path
+    self.crop_image screenshot_path, page_elements, nil
   end
 
-  def self.zoom_browser(rate)
+  def self.zoom_browser(browser, rate)
     rate.abs.times do
       direction = rate > 0 ? :add : :subtract
-      @browser.send_keys [:control, direction]
+      browser.send_keys [:control, direction]
     end
   end
 
-  def crop_image(path, page_elements, offset_element)
+  def self.crop_image(path, page_elements, offset_element)
     if offset_element
       offset_rectangle = coordinates_from_page_element(offset_element)
     else
       offset_rectangle = [0, 0, 0, 0]
     end
-    rectangles = coordinates_from_page_elements(page_elements)
+    rectangles = self.coordinates_from_page_elements(page_elements)
     crop_rectangle = rectangle(rectangles, offset_rectangle)
 
     top_left_x = crop_rectangle[0]
@@ -58,13 +58,13 @@ module Screenshot
     [top_left_x + x_offset, top_left_y + y_offset, width, height]
   end
 
-  def coordinates_from_page_elements(page_elements)
+  def self.coordinates_from_page_elements(page_elements)
     page_elements.collect do |page_element|
       coordinates_from_page_element page_element
     end
   end
 
-  def coordinates_from_page_element(page_element)
+  def self.coordinates_from_page_element(page_element)
     [page_element.element.wd.location.x, page_element.element.wd.location.y, page_element.element.wd.size.width, page_element.element.wd.size.height]
   end
 
@@ -100,7 +100,7 @@ module Screenshot
     [top_left_x_coordinates(input_rectangles).min, top_left_y_coordinates(input_rectangles).min]
   end
 
-  def highlight(element, color = '#FF00FF')
-    @current_page.execute_script("arguments[0].style.border = 'thick solid #{color}'", element)
+  def self.highlight(current_page, element, color = '#FF00FF')
+    current_page.execute_script("arguments[0].style.border = 'thick solid #{color}'", element)
   end
 end
