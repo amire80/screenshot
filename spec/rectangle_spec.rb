@@ -1,4 +1,4 @@
-require_relative "../lib/screenshot.rb"
+require_relative '../lib/screenshot.rb'
 
 # Rectangle is defined as set of co-ordinates represented by top left x, top left y, width, height
 describe 'Rectangle' do
