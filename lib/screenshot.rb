@@ -1,4 +1,4 @@
-require "screenshot/version"
+require 'screenshot/version'
 
 module Screenshot
   def self.capture(browser, file_name, page_elements)
