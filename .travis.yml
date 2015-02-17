@@ -1,0 +1,7 @@
+language: ruby
+rvm:
+  - 2.2.0
+install: bundle install
+script:
+  - bundle exec rspec
+  - bundle exec rubocop
