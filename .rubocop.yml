@@ -4,6 +4,6 @@ inherit_from: .rubocop_todo.yml
 Metrics/AbcSize:
   Max: 30
 
-# The default is 20, which is too tight
+# The default is 10, which is too tight
 Metrics/MethodLength:
   Max: 20
