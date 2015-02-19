@@ -5,19 +5,10 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 2
-Metrics/AbcSize:
-  Max: 19
-
 # Offense count: 53
 # Configuration parameters: AllowURI, URISchemes.
 Metrics/LineLength:
   Max: 288
-
-# Offense count: 1
-# Configuration parameters: CountComments.
-Metrics/MethodLength:
-  Max: 16
 
 # Offense count: 2
 Style/Documentation:
@@ -41,12 +32,6 @@ Style/RegexpLiteral:
 # Offense count: 1
 # Cop supports --auto-correct.
 Style/SpecialGlobalVars:
-  Enabled: false
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/StringLiterals:
   Enabled: false
 
 # Offense count: 2
