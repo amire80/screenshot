@@ -7,7 +7,7 @@ module Screenshot
     screenshot_path = "#{screenshot_directory}/#{file_name}"
 
     browser.screenshot.save screenshot_path
-    self.crop_image screenshot_path, page_elements, nil
+    self.crop_image screenshot_path, page_elements
   end
 
   def self.zoom_browser(browser, rate)
@@ -17,14 +17,9 @@ module Screenshot
     end
   end
 
-  def self.crop_image(path, page_elements, offset_element)
-    if offset_element
-      offset_rectangle = coordinates_from_page_element(offset_element)
-    else
-      offset_rectangle = [0, 0, 0, 0]
-    end
+  def self.crop_image(path, page_elements)
     rectangles = self.coordinates_from_page_elements(page_elements)
-    crop_rectangle = rectangle(rectangles, offset_rectangle)
+    crop_rectangle = rectangle(rectangles)
 
     top_left_x = crop_rectangle[0]
     top_left_y = crop_rectangle[1]
