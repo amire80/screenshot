@@ -1,13 +1,13 @@
 require 'screenshot/version'
 
 module Screenshot
-  def self.capture(browser, file_name, page_elements)
+  def self.capture(browser, file_name, page_elements, padding = 0)
     screenshot_directory = ENV['LANGUAGE_SCREENSHOT_PATH'] || 'screenshots'
     FileUtils.mkdir_p screenshot_directory
     screenshot_path = "#{screenshot_directory}/#{file_name}"
 
     browser.screenshot.save screenshot_path
-    self.crop_image screenshot_path, page_elements
+    self.crop_image screenshot_path, page_elements, padding
   end
 
   def self.zoom_browser(browser, rate)
@@ -17,9 +17,9 @@ module Screenshot
     end
   end
 
-  def self.crop_image(path, page_elements)
+  def self.crop_image(path, page_elements, padding)
     rectangles = self.coordinates_from_page_elements(page_elements)
-    crop_rectangle = rectangle(rectangles)
+    crop_rectangle = rectangle(rectangles, padding)
 
     top_left_x = crop_rectangle[0]
     top_left_y = crop_rectangle[1]
@@ -37,7 +37,7 @@ module Screenshot
     image.save path
   end
 
-  def self.rectangle(rectangles)
+  def self.rectangle(rectangles, padding = 0)
     top_left_x, top_left_y = top_left_x_y rectangles
     bottom_right_x, bottom_right_y = bottom_right_x_y rectangles
 
@@ -46,7 +46,7 @@ module Screenshot
     height = bottom_right_y - top_left_y
 
     # The new rectangle is constructed with all the co-ordinates calculated above
-    [top_left_x, top_left_y, width, height]
+    [top_left_x - padding, top_left_y - padding, width + padding * 2, height + padding * 2]
   end
 
   def self.coordinates_from_page_elements(page_elements)
