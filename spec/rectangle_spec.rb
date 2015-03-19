@@ -194,3 +194,13 @@ describe 'Bottom right co-ordinates y' do
     expect(Screenshot.bottom_right_y_coordinates(input_rectangles)).to eq(output_coordinates)
   end
 end
+
+describe 'Bottom right co-ordinates y' do
+  it 'if we provide 1 rectangle and a padding of 2 pixels, the rectangle is increased by 2 pixels on each side' do
+    input_rectangle = [7, 42, 19, 125]
+    output_rectangle = [5, 40, 23, 129]
+    padding = 2
+    input_rectangles = [input_rectangle]
+    expect(Screenshot.rectangle(input_rectangles, padding)).to eq(output_rectangle)
+  end
+end
