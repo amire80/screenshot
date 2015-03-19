@@ -42,7 +42,7 @@ module Screenshot
     image.save path
   end
 
-  def self.rectangle(rectangles, offset_rectangle = [0, 0, 0, 0])
+  def self.rectangle(rectangles)
     top_left_x, top_left_y = top_left_x_y rectangles
     bottom_right_x, bottom_right_y = bottom_right_x_y rectangles
 
@@ -50,12 +50,8 @@ module Screenshot
     width = bottom_right_x - top_left_x
     height = bottom_right_y - top_left_y
 
-    # We are calculating the offset co-ordinates
-    x_offset = offset_rectangle[0]
-    y_offset = offset_rectangle[1]
-
     # The new rectangle is constructed with all the co-ordinates calculated above
-    [top_left_x + x_offset, top_left_y + y_offset, width, height]
+    [top_left_x, top_left_y, width, height]
   end
 
   def self.coordinates_from_page_elements(page_elements)
