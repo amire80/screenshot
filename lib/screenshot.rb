@@ -11,9 +11,10 @@ module Screenshot
   end
 
   def self.zoom_browser(browser, rate)
+    command_key = (/darwin/ =~ RUBY_PLATFORM) ? :command : :control
     rate.abs.times do
       direction = rate > 0 ? :add : :subtract
-      browser.send_keys [:control, direction]
+      browser.send_keys [command_key, direction]
     end
   end
 
